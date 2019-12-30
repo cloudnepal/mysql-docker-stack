@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  db:
+    image: "mysql:8.0"
+    container_name: "mysql_8.0"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=laravel
+    ports:
+      - "3380:3306"
+    volumes:
+      - ~/.docker-stack/mysql/80:/var/lib/mysql
+    networks:
+      - mysql
+
+networks:
+  mysql:
+   name: mysql

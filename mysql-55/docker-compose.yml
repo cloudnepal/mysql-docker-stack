@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  db:
+    image: "mysql:5.5"
+    container_name: "mysql_5.5"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=laravel
+    ports:
+      - "3355:3306"
+    volumes:
+      - ~/.docker-stack/mysql/55:/var/lib/mysql
+    networks:
+      - mysql
+
+networks:
+  mysql:
+   name: mysql
